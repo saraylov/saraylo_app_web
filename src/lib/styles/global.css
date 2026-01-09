@@ -1,0 +1,175 @@
+/* Global styles for Qoder Developer Website */
+
+:root {
+	/* Color Palette */
+	--color-lime: #84cc16; /* Warmer lime green */
+	--color-peach: #fb923c; /* Warmer peach */
+	--color-fuchsia: #d946ef; /* Richer fuchsia */
+	--color-warm-bg: #fdf6ee; /* Warm, cozy background */
+	--color-warm-bg-alt: #fef7f0; /* Alternative warm background */
+	--color-warm-neutral: #f5f0eb; /* Warm neutral */
+	--color-warm-text: #4a3a31; /* Warm text */
+	--color-warm-text-light: #7d6d61; /* Light warm text */
+	--color-warm-text-lighter: #a89c92; /* Lighter warm text */
+	--color-warm-border: #e6ddd4; /* Warm border */
+	--color-warm-accent: #f0e6dc; /* Warm accent */
+	--color-neutral-dark: #1c1713; /* Dark warm neutral */
+	--color-gray-100: #f5f0eb;
+	--color-gray-200: #eee8e2;
+	--color-gray-300: #e2d9cf;
+	--color-gray-400: #ccc3ba;
+	--color-gray-500: #aaa198;
+	--color-gray-600: #8c847d;
+	--color-gray-700: #6f6963;
+	--color-gray-800: #524d48;
+	--color-gray-900: #35312d;
+
+	/* Typography */
+	--font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+	--font-ui: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+	--font-cyrillic: 'Inter', 'Roboto', 'Arial', sans-serif;
+
+	/* Font sizes */
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.25rem;
+	--text-2xl: 1.5rem;
+	--text-3xl: 1.875rem;
+	--text-4xl: 2.25rem;
+	--text-5xl: 3rem;
+	--text-6xl: 3.75rem;
+
+	/* Spacing */
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+	--spacing-3xl: 4rem;
+
+	/* Effects */
+	--glass-bg: rgba(255, 255, 255, 0.15);
+	--glass-border: rgba(255, 255, 255, 0.25);
+	--shadow-soft: 0 4px 6px -1px rgba(74, 58, 49, 0.1), 0 2px 4px -1px rgba(74, 58, 49, 0.06);
+	--shadow-md: 0 10px 15px -3px rgba(74, 58, 49, 0.1), 0 4px 6px -2px rgba(74, 58, 49, 0.05);
+	--glow-lime: 0 0 15px rgba(132, 204, 22, 0.3);
+	--glow-peach: 0 0 15px rgba(251, 146, 60, 0.3);
+	--glow-fuchsia: 0 0 15px rgba(217, 70, 239, 0.3);
+
+	/* Transitions */
+	--transition-fast: 150ms ease;
+	--transition-normal: 300ms ease;
+	--transition-slow: 500ms ease;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--font-ui), var(--font-cyrillic);
+	background-color: var(--color-warm-bg);
+	color: var(--color-warm-text);
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-mono);
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--color-warm-text);
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-lg);
+}
+
+.grid {
+	display: grid;
+	gap: var(--spacing-lg);
+}
+
+.grid-cols-1 {
+	grid-template-columns: 1fr;
+}
+
+.grid-cols-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+/* Typography Utilities */
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+.text-5xl { font-size: var(--text-5xl); }
+.text-6xl { font-size: var(--text-6xl); }
+
+.font-mono { font-family: var(--font-mono); }
+.font-ui { font-family: var(--font-ui); }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-normal { line-height: 1.5; }
+.leading-relaxed { line-height: 1.625; }
+
+@media (max-width: 768px) {
+	.grid-cols-2,
+	.grid-cols-3 {
+		grid-template-columns: 1fr;
+	}
+	
+	h1 {
+		font-size: 2rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+	}
+}

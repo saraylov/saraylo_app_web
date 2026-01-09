@@ -1,0 +1,9 @@
+{
+	"/": [],
+	"/about": [],
+	"/contact": [],
+	"/products": [],
+	"/products/[id]": [
+		"src/routes/products/[id]/+page.ts"
+	]
+}
