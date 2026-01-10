@@ -9,10 +9,11 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
     
     steps:
     - name: Checkout repository
@@ -25,22 +26,42 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci
+        npm list
       
     - name: Check types
-      run: npm run check
+      run: |
+        echo "Running type checking..."
+        npm run check
+        echo "Type checking completed successfully"
       
     - name: Build project
-      run: npm run build
+      run: |
+        echo "Starting build process..."
+        npm run build
+        echo "Build completed. Checking output:"
+        ls -la build/
       
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: sveltekit-build-${{ matrix.node-version }}
-        path: |
-          .svelte-kit/
-          build/
-        retention-days: 5
+#     - name: Upload build artifacts
+#       uses: actions/upload-artifact@v4
+#       with:
+#         name: sveltekit-build-${{ matrix.node-version }}
+#         path: |
+#           .svelte-kit/
+#           build/
+#         retention-days: 5
+        
+    - name: Check build output
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      run: |
+        if [ ! -d "build" ] || [ -z "$(ls -A build)" ]; then
+          echo "Error: Build directory is missing or empty"
+          ls -la
+          exit 1
+        fi
+        echo "Build directory contents:"
+        ls -la build/
         
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
@@ -49,3 +70,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
         cname: ''
+        commit_message: "Deploy: ${{ github.sha }}"
+        enable_jekyll: false
+        allow_empty_commit: false
+        force_orphan: true
