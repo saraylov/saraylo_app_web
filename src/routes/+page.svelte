@@ -1,22 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import { goto } from '$app/navigation';
 	
 	let isVisible = false;
 	
 	onMount(() => {
-		// Проверяем, было ли перенаправление с GitHub Pages 404
-		const redirectPath = sessionStorage.getItem('github-pages-redirect-path');
-		if (redirectPath && redirectPath !== '/' && redirectPath !== '/index.html') {
-			// Очищаем sessionStorage
-			sessionStorage.removeItem('github-pages-redirect-path');
-			// Переходим к запрашиваемому маршруту
-			goto(redirectPath);
-			return;
-		}
-		
-		// Обычная анимация загрузки
+		// Trigger animation after component mounts
 		setTimeout(() => {
 			isVisible = true;
 		}, 100);

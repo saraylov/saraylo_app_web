@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Загрузка...</title>
+    <title>Redirecting...</title>
     <script>
-        // Обработка SPA маршрутизации для GitHub Pages
-        (function() {
-            var path = window.location.pathname;
-            var base = '/saraylo_app_web';
-            
-            // Если путь начинается с базового пути, работаем с относительным путем
-            if (path.startsWith(base)) {
-                path = path.substring(base.length);
-            }
-            
-            // Убираем завершающий слэш если это не корневой путь
-            if (path !== '/' && path.endsWith('/')) {
-                path = path.slice(0, -1);
-            }
-            
-            // Сохраняем состояние для правильной навигации внутри приложения
-            sessionStorage.setItem('github-pages-redirect-path', path || '/');
-            
-            // Загружаем основное приложение
-            window.location.replace(base + '/index.html');
-        })();
+        // Получаем текущий путь
+        const path = window.location.pathname;
+        const base = '/saraylo_app_web';
+        
+        // Если мы не на главной странице, перенаправляем на index.html с сохранением пути
+        if (path !== base + '/' && path !== base) {
+            // Перенаправляем на главную с хэшем для клиентской маршрутизации
+            window.location.replace(base + '/#' + path.substring(base.length));
+        }
     </script>
 </head>
 <body>
-    <p>Перенаправление...</p>
+    <p>Redirecting...</p>
 </body>
 </html>

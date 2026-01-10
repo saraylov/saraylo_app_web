@@ -47,6 +47,11 @@ const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   })}</ul> <div class="sidebar-footer svelte-2bvc37"><div class="tech-stack svelte-2bvc37" data-svelte-h="svelte-14521hi"><span class="tech-item svelte-2bvc37">Svelte</span> <span class="tech-item svelte-2bvc37">TypeScript</span> <span class="tech-item svelte-2bvc37">Node.js</span></div> ${validate_component(LanguageSwitcher, "LanguageSwitcher").$$render($$result, {}, {}, {})}</div></nav>  <main class="main-content svelte-2bvc37">${slots.default ? slots.default({}) : ``}</main>  ${``} </div>`;
 });
 const Layout_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  if (typeof window !== "undefined") {
+    import("../../chunks/hooks.client.js").then((module) => {
+      module.setupNavigationHandler();
+    });
+  }
   return `${validate_component(Layout, "Layout").$$render($$result, {}, {}, {
     default: () => {
       return `${slots.default ? slots.default({}) : ``}`;

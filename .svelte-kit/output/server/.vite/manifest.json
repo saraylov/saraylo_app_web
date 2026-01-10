@@ -95,6 +95,17 @@
       "_internal.js"
     ]
   },
+  "src/hooks.client.ts": {
+    "file": "chunks/hooks.client.js",
+    "name": "hooks.client",
+    "src": "src/hooks.client.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_exports.js",
+      "_utils.js",
+      "_state.svelte.js"
+    ]
+  },
   "src/hooks.server.ts": {
     "file": "chunks/hooks.server.js",
     "name": "hooks.server",
@@ -110,6 +121,9 @@
       "_ssr.js",
       "_index.js"
     ],
+    "dynamicImports": [
+      "src/hooks.client.ts"
+    ],
     "css": [
       "_app/immutable/assets/_layout.DjK9BQ7v.css"
     ]
@@ -121,10 +135,7 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_index.js",
-      "_exports.js",
-      "_utils.js",
-      "_state.svelte.js"
+      "_index.js"
     ],
     "css": [
       "_app/immutable/assets/_page.BFQduGVd.css"

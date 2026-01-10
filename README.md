@@ -46,27 +46,7 @@ src/
 - **Language**: TypeScript
 - **Styling**: CSS with custom properties
 - **Build Tool**: Vite
-- **Deployment**: GitHub Pages ready with automated CI/CD
-
-## 🌐 GitHub Pages Deployment
-
-This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
-
-### Automatic Deployment
-1. Push changes to the `main` branch
-2. GitHub Actions will automatically build and deploy
-3. Your site will be available at: `https://[username].github.io/saraylo_app_web`
-
-### Manual Deployment Steps
-1. Ensure your repository settings have GitHub Pages enabled
-2. Set source to "GitHub Actions"
-3. The workflow in `.github/workflows/deploy.yml` handles the rest
-
-### Configuration Notes
-- Uses `@sveltejs/adapter-static` for static site generation
-- Base path configured for `/saraylo_app_web` subdirectory
-- Includes `.nojekyll` file to prevent Jekyll processing
-- Assets are properly routed for static hosting
+- **Deployment**: Ready for any static hosting
 
 ## 🚀 Getting Started
 

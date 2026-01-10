@@ -110,7 +110,23 @@ const options = {
   service_worker: false,
   service_worker_options: void 0,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!DOCTYPE html>\r\n<html lang="%lang%" id="html">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>",
+    app: ({ head, body, assets, nonce, env }) => '<!DOCTYPE html>\r\n<html lang="%lang%" id="html">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets + `/favicon.png" />\r
+		<meta name="viewport" content="width=device-width, initial-scale=1" />\r
+		<script>\r
+			// Обработка хэш-маршрутов для GitHub Pages\r
+			(function() {\r
+				if (window.location.hash) {\r
+					const hashPath = window.location.hash.substring(1);\r
+					if (hashPath && hashPath !== '/') {\r
+						// Заменяем историю браузера без перезагрузки\r
+						history.replaceState(null, null, hashPath);\r
+						// Очищаем хэш\r
+						window.location.hash = '';\r
+					}\r
+				}\r
+			})();\r
+		<\/script>\r
+		` + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>",
     error: ({ status, message }) => '<!doctype html>\r\n<html lang="en">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<title>' + message + `</title>\r
 \r
 		<style>\r
@@ -182,7 +198,7 @@ const options = {
 		<div class="error">\r
 			<span class="status">` + status + '</span>\r\n			<div class="message">\r\n				<h1>' + message + "</h1>\r\n			</div>\r\n		</div>\r\n	</body>\r\n</html>\r\n"
   },
-  version_hash: "1n2dvmk"
+  version_hash: "10sd3ld"
 };
 async function get_hooks() {
   let handle;
