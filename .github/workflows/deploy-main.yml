@@ -1,0 +1,62 @@
+name: Deploy to Main Branch
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy-main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm list
+        
+    - name: Check types
+      run: |
+        echo "Running type checking..."
+        npm run check
+        echo "Type checking completed successfully"
+        
+    - name: Build project
+      run: |
+        echo "Starting build process..."
+        npm run build
+        echo "Build completed. Checking output:"
+        ls -la build/
+        
+    - name: Check build output
+      run: |
+        if [ ! -d "build" ] || [ -z "$(ls -A build)" ]; then
+          echo "Error: Build directory is missing or empty"
+          ls -la
+          exit 1
+        fi
+        echo "Build directory contents:"
+        ls -la build/
+        
+    - name: Configure git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+    - name: Deploy to docs folder
+      run: |
+        echo "Moving build files to docs directory..."
+        rm -rf docs
+        mv build docs
+        git add docs/
+        git commit -m "Deploy: ${{ github.sha }}" || echo "No changes to commit"
+        git push

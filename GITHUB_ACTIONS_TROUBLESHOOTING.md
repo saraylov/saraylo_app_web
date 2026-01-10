@@ -95,6 +95,50 @@ npm run build    # Сборка проекта
 ls -la build/    # Проверка содержимого build директории
 ```
 
+## Решение проблемы 403 Permission Denied:
+
+### Симптомы:
+```
+remote: Permission to username/repo.git denied to github-actions[bot].
+fatal: unable to access 'https://github.com/username/repo.git/': The requested URL returned error: 403
+```
+
+### Причины:
+1. **Неправильные настройки GitHub Pages**
+2. **Ограниченные права доступа для GitHub Actions**
+3. **Защищенная ветка gh-pages**
+4. **Отсутствующий GITHUB_TOKEN**
+
+### Решения:
+
+#### 1. Проверьте настройки GitHub Pages:
+- Перейдите в **Settings** → **Pages**
+- Убедитесь, что **Source** установлен на **GitHub Actions**
+- Или выберите **Deploy from a branch** → `gh-pages` branch
+
+#### 2. Разрешите запись для GitHub Actions:
+- Перейдите в **Settings** → **Actions** → **General**
+- В разделе **Workflow permissions** выберите:
+  - ✅ **Read and write permissions**
+- Нажмите **Save**
+
+#### 3. Проверьте защиту веток:
+- Перейдите в **Settings** → **Branches**
+- Убедитесь, что ветка `gh-pages` не защищена
+- Или добавьте `github-actions[bot]` в список разрешенных пользователей
+
+#### 4. Альтернативный деплой в основную ветку:
+Используйте файл `.github/workflows/deploy-main.yml` который:
+- Собирает сайт в директорию `docs/`
+- Коммитит изменения в основную ветку
+- Работает без необходимости в ветке `gh-pages`
+
+#### 5. Настройка GitHub Pages для docs директории:
+- Перейдите в **Settings** → **Pages**
+- Выберите **Deploy from a branch**
+- Выберите вашу основную ветку (main/master)
+- В **Folder** выберите `/docs`
+
 ## Мониторинг:
 
 - Следите за длительностью выполнения workflow
