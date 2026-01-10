@@ -217,7 +217,12 @@
 		font-weight: 800;
 	}
 
-	
+	.highlight {
+		background: linear-gradient(135deg, var(--color-lime) 0%, var(--color-fuchsia) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
 
 	.page-subtitle {
 		font-size: var(--text-xl);

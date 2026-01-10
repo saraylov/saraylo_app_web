@@ -83,19 +83,7 @@
 
 	<!-- Mobile overlay -->
 	{#if isOpen}
-		<div 
-				class="mobile-overlay" 
-				on:click={() => isOpen = false}
-				role="button"
-				tabindex="0"
-				on:keydown={(e) => {
-					if (e.key === 'Enter' || e.key === ' ') {
-						isOpen = false;
-						e.preventDefault();
-					}
-				}}
-				aria-label="Close menu"
-			></div>
+		<div class="mobile-overlay" on:click={() => isOpen = false}></div>
 	{/if}
 </div>
 

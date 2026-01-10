@@ -63,7 +63,7 @@
 						src={data.product.images[currentImageIndex]} 
 						alt="{data.product.name} screenshot"
 						class="main-image"
-						
+						on:error={(e) => e.currentTarget.src = '/images/placeholder.jpg'}
 					/>
 					
 					{#if data.product.images.length > 1}
@@ -83,7 +83,7 @@
 								<img 
 									src={image} 
 									alt="Thumbnail {index + 1}"
-									
+									on:error={(e) => e.currentTarget.src = '/images/placeholder-thumb.jpg'}
 								/>
 							</button>
 						{/each}
