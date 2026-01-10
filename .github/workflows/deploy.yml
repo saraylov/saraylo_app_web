@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
       
     - name: Setup Node.js 20.x
       uses: actions/setup-node@v4
@@ -47,10 +49,11 @@ jobs:
         echo "Build directory contents:"
         ls -la build/
         
-    - name: Configure git
+    - name: Configure git with GitHub Actions token
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         
     - name: Deploy to docs folder
       run: |
@@ -58,5 +61,12 @@ jobs:
         rm -rf docs
         mv build docs
         git add docs/
-        git commit -m "Deploy: ${{ github.sha }}" || echo "No changes to commit"
-        git push
+        # Check if there are changes to commit
+        if ! git diff --cached --quiet; then
+          git commit -m "Deploy website: ${{ github.sha }}"
+          echo "Pushing changes to repository..."
+          git push origin HEAD:${{ github.ref_name }}
+          echo "Deployment successful!"
+        else
+          echo "No changes to deploy"
+        fi
