@@ -96,9 +96,9 @@
 						<div class="social-links">
 							<h3>{t('contact.connect_with_us')}</h3>
 							<div class="social-icons">
-								<a href="#" class="social-link">GitHub</a>
-								<a href="#" class="social-link">Twitter</a>
-								<a href="#" class="social-link">LinkedIn</a>
+								<button type="button" class="social-link" on:click={() => alert("GitHub profile link would go here")}>GitHub</button>
+								<button type="button" class="social-link" on:click={() => alert("Twitter profile link would go here")}>Twitter</button>
+								<button type="button" class="social-link" on:click={() => alert("LinkedIn profile link would go here")}>LinkedIn</button>
 							</div>
 						</div>
 					</div>
@@ -240,12 +240,7 @@
 		font-weight: 800;
 	}
 
-	.highlight {
-		background: linear-gradient(135deg, var(--color-lime) 0%, var(--color-fuchsia) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
+	
 
 	.page-subtitle {
 		font-size: var(--text-xl);
