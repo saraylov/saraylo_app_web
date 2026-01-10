@@ -40,6 +40,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/about" | "/about/" | "/contact" | "/contact/" | "/products" | "/products/" | `/products/${string}` & {} | `/products/${string}/` & {};
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/favicon.png" | "/images/codevault-1.jpg" | "/images/placeholder-thumb.jpg" | "/images/placeholder.jpg" | "/images/taskflow-1.jpg" | "/images/taskflow-2.jpg" | string & {};
+		Asset(): "/.nojekyll" | "/favicon.png" | "/images/codevault-1.jpg" | "/images/placeholder-thumb.jpg" | "/images/placeholder.jpg" | "/images/taskflow-1.jpg" | "/images/taskflow-2.jpg" | string & {};
 	}
 }
