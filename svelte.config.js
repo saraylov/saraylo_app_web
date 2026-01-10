@@ -16,6 +16,9 @@ const config = {
 		}),
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/saraylo_app_web' : ''
+		},
+		prerender: {
+			entries: ['*']
 		}
 	}
 };

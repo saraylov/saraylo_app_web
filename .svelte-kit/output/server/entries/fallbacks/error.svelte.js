@@ -3,20 +3,7 @@ import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
 import "../../chunks/utils.js";
 import "@sveltejs/kit/internal/server";
-import { o as onMount } from "../../chunks/ssr2.js";
-const is_legacy = onMount.toString().includes("$$") || /function \w+\(\) \{\}/.test(onMount.toString());
-if (is_legacy) {
-  ({
-    data: {},
-    form: null,
-    error: null,
-    params: {},
-    route: { id: null },
-    state: {},
-    status: -1,
-    url: new URL("https://example.com")
-  });
-}
+import "../../chunks/state.svelte.js";
 const getStores = () => {
   const stores = getContext("__svelte__");
   return {
