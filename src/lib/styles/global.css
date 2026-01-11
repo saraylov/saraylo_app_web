@@ -73,10 +73,29 @@
 
 body {
 	font-family: var(--font-ui), var(--font-cyrillic);
-	background-color: var(--color-warm-bg);
-	color: var(--color-warm-text);
+	background-color: var(--color-warm-bg) !important;
+	color: var(--color-warm-text) !important;
 	line-height: 1.6;
 	overflow-x: hidden;
+}
+
+/* Force color scheme override */
+html {
+	background-color: var(--color-warm-bg) !important;
+}
+
+/* Ensure all elements use our color scheme */
+*, *::before, *::after {
+	color: var(--color-warm-text) !important;
+}
+
+/* Override any external styles that might conflict */
+a:not([class]) {
+	color: var(--color-lime) !important;
+}
+
+button:not([class]) {
+	color: var(--color-warm-text) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
