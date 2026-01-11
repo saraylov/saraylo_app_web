@@ -41,7 +41,7 @@ jobs:
         run: npm run build
       
       - name: Generate enhanced index.html
-        run: node generate-enhanced-index.js
+        run: node generate-enhanced-index.cjs
       
       - name: Configure SPA routing for GitHub Pages
         run: |
