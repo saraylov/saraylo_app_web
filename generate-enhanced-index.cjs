@@ -1,7 +1,4 @@
-const fs = require('fs');
-
-// Определяем базовый путь в зависимости от среды
-const basePath = process.env.GITHUB_PAGES ? '/saraylo_app_web' : '';
+import fs from 'fs';
 
 const enhancedHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -10,17 +7,16 @@ const enhancedHtml = `<!DOCTYPE html>
     <title>Saraylo Developer Studio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    <link rel="icon" href="${basePath}/favicon.png" />
+    <link rel="icon" href="./favicon.png" />
     
-    <!-- Используем абсолютные пути для GitHub Pages -->
-    <link rel="modulepreload" href="${basePath}/_app/immutable/entry/start.CR_ZpI9r.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/chunks/CDRVZyl4.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/chunks/D6D-lzwe.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/chunks/BUApaBEI.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/entry/app.D7sLei-a.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/chunks/CSMTX6pb.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/chunks/Db2X8iEw.js">
-    <link rel="modulepreload" href="${basePath}/_app/immutable/chunks/C-Gqmohk.js">
+    <link rel="modulepreload" href="./_app/immutable/entry/start.CR_ZpI9r.js">
+    <link rel="modulepreload" href="./_app/immutable/chunks/CDRVZyl4.js">
+    <link rel="modulepreload" href="./_app/immutable/chunks/D6D-lzwe.js">
+    <link rel="modulepreload" href="./_app/immutable/chunks/BUApaBEI.js">
+    <link rel="modulepreload" href="./_app/immutable/entry/app.D7sLei-a.js">
+    <link rel="modulepreload" href="./_app/immutable/chunks/CSMTX6pb.js">
+    <link rel="modulepreload" href="./_app/immutable/chunks/Db2X8iEw.js">
+    <link rel="modulepreload" href="./_app/immutable/chunks/C-Gqmohk.js">
     
     <style>
         body {
@@ -87,20 +83,6 @@ const enhancedHtml = `<!DOCTYPE html>
         .retry-button:hover {
             background: #5a67d8;
         }
-        
-        .debug-info {
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            color: #718096;
-            text-align: left;
-        }
-        
-        .debug-item {
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            background: #f7fafc;
-            border-radius: 6px;
-        }
     </style>
 </head>
 <body>
@@ -110,19 +92,6 @@ const enhancedHtml = `<!DOCTYPE html>
                 <div class="spinner"></div>
                 <h2>Загрузка приложения</h2>
                 <p>Пожалуйста, подождите...</p>
-                
-                <div class="debug-info">
-                    <div class="debug-item">
-                        <strong>Путь:</strong> <span id="current-path">Определение...</span>
-                    </div>
-                    <div class="debug-item">
-                        <strong>Base Path:</strong> <span id="base-path">${basePath}</span>
-                    </div>
-                    <div class="debug-item">
-                        <strong>Origin:</strong> <span id="origin-url">Определение...</span>
-                    </div>
-                </div>
-                
                 <div id="error-message" class="error-message">
                     <strong>Ошибка загрузки:</strong>
                     <div id="error-details"></div>
@@ -133,19 +102,12 @@ const enhancedHtml = `<!DOCTYPE html>
     </div>
 
     <script>
-        // Инициализация отладочной информации
-        document.getElementById('current-path').textContent = window.location.pathname;
-        document.getElementById('origin-url').textContent = window.location.origin;
-        
-        // Расширенная обработка ошибок
         window.onerror = function(message, source, lineno, colno, error) {
-            console.error('Глобальная ошибка:', { message, source, lineno, colno, error });
             showError('JavaScript Error: ' + (error?.message || message));
             return true;
         };
         
         window.addEventListener('unhandledrejection', function(event) {
-            console.error('Необработанное отклонение промиса:', event.reason);
             showError('Promise Error: ' + (event.reason?.message || 'Unknown error'));
             event.preventDefault();
         });
@@ -164,35 +126,26 @@ const enhancedHtml = `<!DOCTYPE html>
             location.reload();
         }
         
-        // Проверка поддержки браузера
         if (!window.Promise || !window.fetch) {
-            showError('Ваш браузер не поддерживает необходимые технологии. Пожалуйста, обновите браузер.');
+            showError('Ваш браузер не поддерживает необходимые технологии.');
         } else {
-            console.log('Проверка поддержки браузера пройдена');
-            
-            // Используем правильные пути для GitHub Pages
-            const basePath = '${basePath}';
-            
             Promise.all([
-                import(basePath + '/_app/immutable/entry/start.CR_ZpI9r.js').catch(err => {
-                    throw new Error('Не удалось загрузить start модуль: ' + err.message);
+                import('./_app/immutable/entry/start.CR_ZpI9r.js').catch(err => {
+                    throw new Error('Failed to load start module: ' + err.message);
                 }),
-                import(basePath + '/_app/immutable/entry/app.D7sLei-a.js').catch(err => {
-                    throw new Error('Не удалось загрузить app модуль: ' + err.message);
+                import('./_app/immutable/entry/app.D7sLei-a.js').catch(err => {
+                    throw new Error('Failed to load app module: ' + err.message);
                 })
             ])
             .then(([kit, app]) => {
-                console.log('Модули загружены успешно');
                 try {
                     const element = document.getElementById('app');
                     kit.start(app, element);
-                    console.log('Приложение запущено успешно');
                 } catch (error) {
-                    throw new Error('Ошибка запуска приложения: ' + error.message);
+                    throw new Error('Failed to start application: ' + error.message);
                 }
             })
             .catch(error => {
-                console.error('Ошибка загрузки приложения:', error);
                 showError(error.message);
             });
         }
@@ -207,4 +160,4 @@ if (!fs.existsSync('build')) {
 
 // Write the enhanced index.html file
 fs.writeFileSync('build/enhanced-index.html', enhancedHtml);
-console.log('Enhanced index.html created successfully with base path:', basePath);
+console.log('Enhanced index.html created successfully');

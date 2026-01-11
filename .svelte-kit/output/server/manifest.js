@@ -6,38 +6,20 @@ function __memo(fn) {
 
 return {
 	appDir: "_app",
-	appPath: "_app",
+	appPath: "saraylo_app_web/_app",
 	assets: new Set(["404.html","favicon.png","images/codevault-1.jpg","images/placeholder-thumb.jpg","images/placeholder.jpg","images/taskflow-1.jpg","images/taskflow-2.jpg","spa-redirect.html"]),
 	mimeTypes: {".html":"text/html",".png":"image/png",".jpg":"image/jpeg"},
 	_: {
-		client: {start:"_app/immutable/entry/start.CR_ZpI9r.js",app:"_app/immutable/entry/app.D7sLei-a.js",imports:["_app/immutable/entry/start.CR_ZpI9r.js","_app/immutable/chunks/CDRVZyl4.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/BUApaBEI.js","_app/immutable/entry/app.D7sLei-a.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/CSMTX6pb.js","_app/immutable/chunks/Db2X8iEw.js","_app/immutable/chunks/C-Gqmohk.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.CI23okVn.js",app:"_app/immutable/entry/app.BhHuzAam.js",imports:["_app/immutable/entry/start.CI23okVn.js","_app/immutable/chunks/CvtCeujX.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/BUApaBEI.js","_app/immutable/entry/app.BhHuzAam.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/CSMTX6pb.js","_app/immutable/chunks/Db2X8iEw.js","_app/immutable/chunks/C-Gqmohk.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
-			__memo(() => import('./nodes/2.js')),
-			__memo(() => import('./nodes/3.js')),
-			__memo(() => import('./nodes/4.js')),
-			__memo(() => import('./nodes/5.js')),
 			__memo(() => import('./nodes/6.js'))
 		],
 		remotes: {
 			
 		},
 		routes: [
-			{
-				id: "/",
-				pattern: /^\/$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 2 },
-				endpoint: null
-			},
-			{
-				id: "/about",
-				pattern: /^\/about\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 3 },
-				endpoint: null
-			},
 			{
 				id: "/api/v1/auth/login",
 				pattern: /^\/api\/v1\/auth\/login\/?$/,
@@ -130,28 +112,14 @@ return {
 				endpoint: __memo(() => import('./entries/endpoints/api/v1/team-members/_id_/delete/_server.ts.js'))
 			},
 			{
-				id: "/contact",
-				pattern: /^\/contact\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
-				endpoint: null
-			},
-			{
-				id: "/products",
-				pattern: /^\/products\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 5 },
-				endpoint: null
-			},
-			{
 				id: "/products/[id]",
 				pattern: /^\/products\/([^/]+?)\/?$/,
 				params: [{"name":"id","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 6 },
+				page: { layouts: [0,], errors: [1,], leaf: 2 },
 				endpoint: null
 			}
 		],
-		prerendered_routes: new Set([]),
+		prerendered_routes: new Set(["/saraylo_app_web/","/saraylo_app_web/about","/saraylo_app_web/contact","/saraylo_app_web/products"]),
 		matchers: async () => {
 			
 			return {  };

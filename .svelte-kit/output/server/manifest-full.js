@@ -6,11 +6,11 @@ function __memo(fn) {
 
 return {
 	appDir: "_app",
-	appPath: "_app",
+	appPath: "saraylo_app_web/_app",
 	assets: new Set(["404.html","favicon.png","images/codevault-1.jpg","images/placeholder-thumb.jpg","images/placeholder.jpg","images/taskflow-1.jpg","images/taskflow-2.jpg","spa-redirect.html"]),
 	mimeTypes: {".html":"text/html",".png":"image/png",".jpg":"image/jpeg"},
 	_: {
-		client: {start:"_app/immutable/entry/start.CR_ZpI9r.js",app:"_app/immutable/entry/app.D7sLei-a.js",imports:["_app/immutable/entry/start.CR_ZpI9r.js","_app/immutable/chunks/CDRVZyl4.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/BUApaBEI.js","_app/immutable/entry/app.D7sLei-a.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/CSMTX6pb.js","_app/immutable/chunks/Db2X8iEw.js","_app/immutable/chunks/C-Gqmohk.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.CI23okVn.js",app:"_app/immutable/entry/app.BhHuzAam.js",imports:["_app/immutable/entry/start.CI23okVn.js","_app/immutable/chunks/CvtCeujX.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/BUApaBEI.js","_app/immutable/entry/app.BhHuzAam.js","_app/immutable/chunks/D6D-lzwe.js","_app/immutable/chunks/CSMTX6pb.js","_app/immutable/chunks/Db2X8iEw.js","_app/immutable/chunks/C-Gqmohk.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),

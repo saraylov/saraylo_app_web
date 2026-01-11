@@ -8,21 +8,28 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-static generates static files for GitHub Pages
+		// Configure static adapter for GitHub Pages
 		adapter: adapter({
-			// Configure base path for GitHub Pages
-			paths: {
-				base: process.env.GITHUB_PAGES ? '/saraylo_app_web' : ''
-			},
-			// Configure fallback for SPA routing on GitHub Pages
-			// This creates a 200.html file that handles all routes
-			fallback: 'index.html',
-			// Allow dynamic routes that can't be prerendered
-			// API routes and dynamic pages will be handled client-side
-			strict: false,
-			// Ensure proper module handling for older browsers
-			preloadStrategy: 'modulepreload'
-		})
+			// Enable fallback for SPA routing
+			fallback: '404.html',
+			// Allow dynamic routes to be handled client-side
+			strict: false
+		}),
+		// Set base path for GitHub Pages
+		paths: {
+			base: '/saraylo_app_web'
+		},
+		// Handle prerender errors for base path mismatch
+		prerender: {
+		handleHttpError: ({ path, referrer, message }) => {
+			// Ignore base path mismatch errors
+			if (message.includes('does not begin with `base`')) {
+				return;
+			}
+			// Throw other errors
+			throw new Error(message);
+		}
+		}
 	}
 };
 
