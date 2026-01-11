@@ -42,6 +42,9 @@ jobs:
       
       - name: Configure SPA routing for GitHub Pages
         run: |
+          # Copy our enhanced index.html to be the main file
+          cp build/final-index.html build/index.html
+          
           # Copy the fallback file to 404.html for GitHub Pages
           cp build/index.html build/404.html
           
