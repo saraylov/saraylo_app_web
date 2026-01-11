@@ -1,5 +1,5 @@
 const BROWSER = false;
-let base = "/saraylo_app_web";
+let base = "";
 let assets = base;
 const app_dir = "_app";
 const relative = true;

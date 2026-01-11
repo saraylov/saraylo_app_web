@@ -1,6 +1,6 @@
 {
   ".svelte-kit/generated/client-optimized/app.js": {
-    "file": "_app/immutable/entry/app.BGeTV34Q.js",
+    "file": "_app/immutable/entry/app.Dm4wVGjQ.js",
     "name": "entry/app",
     "src": ".svelte-kit/generated/client-optimized/app.js",
     "isEntry": true,
@@ -40,7 +40,7 @@
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/1.js": {
-    "file": "_app/immutable/nodes/1.BEeOJZHK.js",
+    "file": "_app/immutable/nodes/1.L1csmQsX.js",
     "name": "nodes/1",
     "src": ".svelte-kit/generated/client-optimized/nodes/1.js",
     "isEntry": true,
@@ -49,7 +49,7 @@
       "_CSMTX6pb.js",
       "_D43ao2JA.js",
       "_D6D-lzwe.js",
-      "_BbxJg0NG.js"
+      "_DhkutK-m.js"
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/2.js": {
@@ -176,14 +176,6 @@
       "_D6D-lzwe.js"
     ]
   },
-  "_BbxJg0NG.js": {
-    "file": "_app/immutable/chunks/BbxJg0NG.js",
-    "name": "entry",
-    "imports": [
-      "_D6D-lzwe.js",
-      "_BUApaBEI.js"
-    ]
-  },
   "_BrFe7kwN.js": {
     "file": "_app/immutable/chunks/BrFe7kwN.js",
     "name": "products"
@@ -220,6 +212,14 @@
       "_D6D-lzwe.js"
     ]
   },
+  "_DhkutK-m.js": {
+    "file": "_app/immutable/chunks/DhkutK-m.js",
+    "name": "entry",
+    "imports": [
+      "_D6D-lzwe.js",
+      "_BUApaBEI.js"
+    ]
+  },
   "_Dr4MgrxQ.js": {
     "file": "_app/immutable/chunks/Dr4MgrxQ.js",
     "name": "props",
@@ -236,12 +236,12 @@
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/client/entry.js": {
-    "file": "_app/immutable/entry/start.B8aM9qjt.js",
+    "file": "_app/immutable/entry/start.BizUx7W4.js",
     "name": "entry/start",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/entry.js",
     "isEntry": true,
     "imports": [
-      "_BbxJg0NG.js"
+      "_DhkutK-m.js"
     ]
   }
 }

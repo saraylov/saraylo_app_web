@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Loading...</title>
+    <script>
+        // Получаем текущий путь
+        var path = window.location.pathname;
+        
+        // Если это не корневой путь репозитория, загружаем index.html
+        if (path !== '/saraylo_app_web/' && path !== '/') {
+            // Перенаправляем на корень с хэшем для клиентской маршрутизации
+            var newPath = path.replace('/saraylo_app_web', '');
+            window.location.replace('/saraylo_app_web/#' + newPath);
+        }
+    </script>
+</head>
+<body>
+    <p>Loading... If stuck, <a href="/saraylo_app_web/">go to homepage</a>.</p>
+</body>
+</html>

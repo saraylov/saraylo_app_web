@@ -28,10 +28,12 @@ If you see "Encountered dynamic routes" error:
 ### 404 Errors on Routes
 If you encounter 404 errors when navigating to pages like `/about` or `/products`:
 - This happens because GitHub Pages expects physical HTML files for each route
-- The solution uses hash-based routing (`#/about`, `#/products`) for SPA compatibility
-- Custom 404.html automatically redirects path-based URLs to hash-based routing
+- Solution uses SvelteKit's `fallback: 'index.html'` configuration with `@sveltejs/adapter-static`
+- GitHub Actions workflow creates redirect pages in subdirectories that point to the main SPA
 - All routes are handled by the client-side SvelteKit router
-- Direct access to URLs now works correctly through automatic redirection
+- Direct access to URLs works through automatic redirection to the SPA with proper base path
+
+**Important**: Make sure the repository name in `svelte.config.js` matches your actual GitHub repository name (`/saraylov` in this case, not `saraylo_app_web`)
 
 ### Jekyll Error
 - Make sure `.nojekyll` file exists in repository root

@@ -40,13 +40,18 @@ jobs:
       - name: Build
         run: npm run build
       
-      - name: Create SPA-compatible structure for GitHub Pages
+      - name: Configure SPA routing for GitHub Pages
         run: |
+          # Copy the fallback file to 404.html for GitHub Pages
           cp build/index.html build/404.html
+          
+          # Create directory structure for direct URL access
           mkdir -p build/about build/products build/contact
-          cp build/index.html build/about/index.html
-          cp build/index.html build/products/index.html
-          cp build/index.html build/contact/index.html
+          
+          # Create redirect pages that point to the main SPA
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/saraylov/#"></head><body><p>If you are not redirected automatically, follow this <a href="/saraylov/#">link</a>.</p></body></html>' > build/about/index.html
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/saraylov/#"></head><body><p>If you are not redirected automatically, follow this <a href="/saraylov/#">link</a>.</p></body></html>' > build/products/index.html
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/saraylov/#"></head><body><p>If you are not redirected automatically, follow this <a href="/saraylov/#">link</a>.</p></body></html>' > build/contact/index.html
       
       - name: Setup Pages
         uses: actions/configure-pages@v5

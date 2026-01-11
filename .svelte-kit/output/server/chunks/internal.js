@@ -2548,78 +2548,78 @@ const options = {
   service_worker_options: void 0,
   templates: {
     app: ({ head, body, assets, nonce, env }) => '<!DOCTYPE html>\r\n<html lang="%lang%" id="html">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>",
-    error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
-
-		<style>
-			body {
-				--bg: white;
-				--fg: #222;
-				--divider: #ccc;
-				background: var(--bg);
-				color: var(--fg);
-				font-family:
-					system-ui,
-					-apple-system,
-					BlinkMacSystemFont,
-					'Segoe UI',
-					Roboto,
-					Oxygen,
-					Ubuntu,
-					Cantarell,
-					'Open Sans',
-					'Helvetica Neue',
-					sans-serif;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				height: 100vh;
-				margin: 0;
-			}
-
-			.error {
-				display: flex;
-				align-items: center;
-				max-width: 32rem;
-				margin: 0 1rem;
-			}
-
-			.status {
-				font-weight: 200;
-				font-size: 3rem;
-				line-height: 1;
-				position: relative;
-				top: -0.05rem;
-			}
-
-			.message {
-				border-left: 1px solid var(--divider);
-				padding: 0 0 0 1rem;
-				margin: 0 0 0 1rem;
-				min-height: 2.5rem;
-				display: flex;
-				align-items: center;
-			}
-
-			.message h1 {
-				font-weight: 400;
-				font-size: 1em;
-				margin: 0;
-			}
-
-			@media (prefers-color-scheme: dark) {
-				body {
-					--bg: #222;
-					--fg: #ddd;
-					--divider: #666;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<div class="error">
-			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
+    error: ({ status, message }) => '<!doctype html>\r\n<html lang="en">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<title>' + message + `</title>\r
+\r
+		<style>\r
+			body {\r
+				--bg: white;\r
+				--fg: #222;\r
+				--divider: #ccc;\r
+				background: var(--bg);\r
+				color: var(--fg);\r
+				font-family:\r
+					system-ui,\r
+					-apple-system,\r
+					BlinkMacSystemFont,\r
+					'Segoe UI',\r
+					Roboto,\r
+					Oxygen,\r
+					Ubuntu,\r
+					Cantarell,\r
+					'Open Sans',\r
+					'Helvetica Neue',\r
+					sans-serif;\r
+				display: flex;\r
+				align-items: center;\r
+				justify-content: center;\r
+				height: 100vh;\r
+				margin: 0;\r
+			}\r
+\r
+			.error {\r
+				display: flex;\r
+				align-items: center;\r
+				max-width: 32rem;\r
+				margin: 0 1rem;\r
+			}\r
+\r
+			.status {\r
+				font-weight: 200;\r
+				font-size: 3rem;\r
+				line-height: 1;\r
+				position: relative;\r
+				top: -0.05rem;\r
+			}\r
+\r
+			.message {\r
+				border-left: 1px solid var(--divider);\r
+				padding: 0 0 0 1rem;\r
+				margin: 0 0 0 1rem;\r
+				min-height: 2.5rem;\r
+				display: flex;\r
+				align-items: center;\r
+			}\r
+\r
+			.message h1 {\r
+				font-weight: 400;\r
+				font-size: 1em;\r
+				margin: 0;\r
+			}\r
+\r
+			@media (prefers-color-scheme: dark) {\r
+				body {\r
+					--bg: #222;\r
+					--fg: #ddd;\r
+					--divider: #666;\r
+				}\r
+			}\r
+		</style>\r
+	</head>\r
+	<body>\r
+		<div class="error">\r
+			<span class="status">` + status + '</span>\r\n			<div class="message">\r\n				<h1>' + message + "</h1>\r\n			</div>\r\n		</div>\r\n	</body>\r\n</html>\r\n"
   },
-  version_hash: "1e42h3o"
+  version_hash: "v4lb0b"
 };
 async function get_hooks() {
   let handle;

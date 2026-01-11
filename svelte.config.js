@@ -8,12 +8,20 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-auto will automatically select the best adapter for the environment
-		adapter: adapter(),
-		// Set base path for GitHub Pages
-		paths: {
-			base: '/saraylo_app_web'
-		}
+		// adapter-static generates static files for GitHub Pages
+		adapter: adapter({
+			// GitHub Pages serves from /repo-name/, so we need to set the base path
+			// Repository name is saraylov (not saraylo_app_web)
+			paths: {
+				base: '/saraylov'
+			},
+			// Configure fallback for SPA routing on GitHub Pages
+			// This creates a 200.html file that handles all routes
+			fallback: 'index.html',
+			// Allow dynamic routes that can't be prerendered
+			// API routes and dynamic pages will be handled client-side
+			strict: false
+		})
 	}
 };
 
