@@ -1,4 +1,5 @@
 <script lang="ts">
+	export const prerender = true;
 	import { onMount } from 'svelte';
 	import { products } from '$lib/data/products';
 	import type { Product } from '$lib/types';

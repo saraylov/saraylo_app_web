@@ -18,7 +18,14 @@
 
 ## Troubleshooting
 
-If you encounter the Jekyll error:
+### Dynamic Routes Error
+If you see "Encountered dynamic routes" error:
+- This happens because the site has API routes and dynamic pages
+- The `strict: false` option in `svelte.config.js` allows these routes to be skipped during static generation
+- Dynamic pages will work through client-side routing
+- API routes are meant for server-side usage and aren't needed for static deployment
+
+### Jekyll Error
 - Make sure `.nojekyll` file exists in repository root
 - Verify that GitHub Pages source is set to "GitHub Actions" (not "Deploy from a branch")
 - Check that the workflow file is in `.github/workflows/deploy.yml`
