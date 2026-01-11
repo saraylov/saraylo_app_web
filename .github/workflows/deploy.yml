@@ -38,26 +38,23 @@ jobs:
         run: npm ci
       
       - name: Build
-        run: GITHUB_PAGES=true npm run build
-      
-      - name: Generate enhanced index.html
-        run: GITHUB_PAGES=true node generate-enhanced-index.cjs
+        run: echo "Using static HTML approach - no build needed"
       
       - name: Configure SPA routing for GitHub Pages
         run: |
-          # Copy enhanced index.html to be the main file
-          cp build/enhanced-index.html build/index.html
+          # Use our static HTML as main index
+          cp build/index.html build/main-index.html
           
-          # Copy the fallback file to 404.html for GitHub Pages
-          cp build/index.html build/404.html
+          # Create 404.html for SPA routing
+          cp build/main-index.html build/404.html
           
           # Create directory structure for direct URL access
           mkdir -p build/about build/products build/contact
           
           # Create redirect pages that point to the main SPA
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/#"></head><body><p>If you are not redirected automatically, follow this <a href="/#">link</a>.</p></body></html>' > build/about/index.html
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/#"></head><body><p>If you are not redirected automatically, follow this <a href="/#">link</a>.</p></body></html>' > build/products/index.html
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/#"></head><body><p>If you are not redirected automatically, follow this <a href="/#">link</a>.</p></body></html>' > build/contact/index.html
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/saraylo_app_web/#"></head><body><p>If you are not redirected automatically, follow this <a href="/saraylo_app_web/#">link</a>.</p></body></html>' > build/about/index.html
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/saraylo_app_web/#"></head><body><p>If you are not redirected automatically, follow this <a href="/saraylo_app_web/#">link</a>.</p></body></html>' > build/products/index.html
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=/saraylo_app_web/#"></head><body><p>If you are not redirected automatically, follow this <a href="/saraylo_app_web/#">link</a>.</p></body></html>' > build/contact/index.html
       
       - name: Setup Pages
         uses: actions/configure-pages@v5

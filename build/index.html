@@ -1,37 +1,325 @@
 <!DOCTYPE html>
-<html lang="en" id="html">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		<link rel="modulepreload" href="/_app/immutable/entry/start.CR_ZpI9r.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/CDRVZyl4.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/D6D-lzwe.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/BUApaBEI.js">
-		<link rel="modulepreload" href="/_app/immutable/entry/app.D7sLei-a.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/CSMTX6pb.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/Db2X8iEw.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/C-Gqmohk.js">
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">
-			<script>
-				{
-					__sveltekit_1vu8ymw = {
-						base: ""
-					};
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Saraylo Developer Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Professional software development solutions by Saraylo">
+    
+    <link rel="icon" href="/saraylo_app_web/favicon.png" />
+    
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Шапка */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Навигация */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Карточки контента */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        /* Состояния загрузки */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="fade-in">
+            <div class="logo">Saraylo</div>
+            <div class="tagline">Professional Software Development Solutions</div>
+            <p>Creating innovative digital experiences with cutting-edge technologies</p>
+        </header>
+        
+        <nav class="fade-in">
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        
+        <main>
+            <section id="services" class="cards fade-in">
+                <div class="card">
+                    <h3>Web Development</h3>
+                    <p>Modern, responsive websites and web applications built with the latest technologies including SvelteKit, React, and Node.js.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Mobile Apps</h3>
+                    <p>Cross-platform mobile applications for iOS and Android using React Native and Flutter frameworks.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Backend Services</h3>
+                    <p>Scalable server-side solutions with REST APIs, GraphQL, and cloud infrastructure integration.</p>
+                </div>
+            </section>
+            
+            <section id="projects" class="cards fade-in">
+                <div class="card">
+                    <h3>E-commerce Platform</h3>
+                    <p>Full-featured online store with payment integration, inventory management, and analytics dashboard.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Portfolio Website</h3>
+                    <p>Modern portfolio showcasing projects and skills with smooth animations and responsive design.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Admin Dashboard</h3>
+                    <p>Data visualization and management system with real-time updates and user authentication.</p>
+                </div>
+            </section>
+            
+            <section id="about" class="cards fade-in">
+                <div class="card">
+                    <h3>About Me</h3>
+                    <p>Passionate developer with expertise in modern web technologies and best practices. Focused on creating efficient, scalable solutions that deliver exceptional user experiences.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Technologies</h3>
+                    <p>SvelteKit, React, Node.js, TypeScript, PostgreSQL, MongoDB, Docker, AWS, and modern CSS frameworks.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Approach</h3>
+                    <p>Agile development methodology with continuous integration, automated testing, and clean code principles.</p>
+                </div>
+            </section>
+            
+            <section id="contact" class="cards fade-in">
+                <div class="card">
+                    <h3>Get In Touch</h3>
+                    <p>Ready to discuss your project? Contact me for consultation and let's build something amazing together.</p>
+                    <p><strong>Email:</strong> contact@saraylo.dev</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Location</h3>
+                    <p>Available for remote work worldwide. Flexible scheduling and communication in multiple languages.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Response Time</h3>
+                    <p>Typical response within 24 hours. Emergency support available for critical projects.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="fade-in">
+            <p>&copy; 2026 Saraylo Developer Studio. All rights reserved.</p>
+            <p>Built with SvelteKit and deployed on GitHub Pages</p>
+        </footer>
+    </div>
 
-					const element = document.currentScript.parentElement;
-
-					Promise.all([
-						import("/_app/immutable/entry/start.CR_ZpI9r.js"),
-						import("/_app/immutable/entry/app.D7sLei-a.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element);
-					});
-				}
-			</script>
-		</div>
-	</body>
+    <script>
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Анимация при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдение за элементами
+        document.querySelectorAll('.card, section').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Информация о загрузке
+        console.log('Saraylo App loaded successfully');
+        console.log('Current path:', window.location.pathname);
+        console.log('Origin:', window.location.origin);
+        
+        // Глобальная обработка ошибок
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error('Global error:', message, source, lineno, colno, error);
+            return true;
+        };
+        
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+            event.preventDefault();
+        });
+    </script>
+</body>
 </html>
