@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import type { NavigationItem } from '$lib/types';
 	import { t } from '$lib/i18n';
 	import LanguageSwitcher from '$lib/components/ui/LanguageSwitcher.svelte';
@@ -8,10 +9,10 @@
 	let currentPath = '';
 	
 	const navigationItems: NavigationItem[] = [
-		{ id: 'home', label: t('nav.home'), path: '/' },
-		{ id: 'products', label: t('nav.products'), path: '/products' },
-		{ id: 'about', label: t('nav.about'), path: '/about' },
-		{ id: 'contact', label: t('nav.contact'), path: '/contact' }
+		{ id: 'home', label: t('nav.home'), path: base + '/' },
+		{ id: 'products', label: t('nav.products'), path: base + '/products' },
+		{ id: 'about', label: t('nav.about'), path: base + '/about' },
+		{ id: 'contact', label: t('nav.contact'), path: base + '/contact' }
 	];
 	
 	onMount(() => {
@@ -23,7 +24,10 @@
 	}
 	
 	function isActive(path: string): boolean {
-		return currentPath === path || (path !== '/' && currentPath.startsWith(path));
+		// Remove base path for comparison
+		const normalizedCurrentPath = currentPath.replace(base, '') || '/';
+		const normalizedPath = path.replace(base, '') || '/';
+		return normalizedCurrentPath === normalizedPath || (normalizedPath !== '/' && normalizedCurrentPath.startsWith(normalizedPath));
 	}
 </script>
 

@@ -1,4 +1,6 @@
 import { w as ensure_array_like, x as attr_class, y as attr, z as slot } from "../../chunks/index.js";
+import { b as base } from "../../chunks/server.js";
+import "@sveltejs/kit/internal/server";
 import { l as locales, t } from "../../chunks/index2.js";
 import { e as escape_html } from "../../chunks/context.js";
 function LanguageSwitcher($$renderer, $$props) {
@@ -28,13 +30,23 @@ function Layout($$renderer, $$props) {
     let isOpen = false;
     let currentPath = "";
     const navigationItems = [
-      { id: "home", label: t("nav.home"), path: "/" },
-      { id: "products", label: t("nav.products"), path: "/products" },
-      { id: "about", label: t("nav.about"), path: "/about" },
-      { id: "contact", label: t("nav.contact"), path: "/contact" }
+      { id: "home", label: t("nav.home"), path: base + "/" },
+      {
+        id: "products",
+        label: t("nav.products"),
+        path: base + "/products"
+      },
+      { id: "about", label: t("nav.about"), path: base + "/about" },
+      {
+        id: "contact",
+        label: t("nav.contact"),
+        path: base + "/contact"
+      }
     ];
     function isActive(path) {
-      return currentPath === path || path !== "/" && currentPath.startsWith(path);
+      const normalizedCurrentPath = currentPath.replace(base, "") || "/";
+      const normalizedPath = path.replace(base, "") || "/";
+      return normalizedCurrentPath === normalizedPath || normalizedPath !== "/" && normalizedCurrentPath.startsWith(normalizedPath);
     }
     $$renderer2.push(`<div class="layout svelte-qgpshq"><button class="mobile-menu-button svelte-qgpshq" aria-label="Toggle navigation menu"><div class="menu-icon svelte-qgpshq"><span${attr_class("svelte-qgpshq", void 0, { "active": isOpen })}></span> <span${attr_class("svelte-qgpshq", void 0, { "active": isOpen })}></span> <span${attr_class("svelte-qgpshq", void 0, { "active": isOpen })}></span></div></button> <nav${attr_class("sidebar svelte-qgpshq", void 0, { "open": isOpen })}><div class="logo-container svelte-qgpshq"><h1 class="logo svelte-qgpshq">Saraylo</h1> <p class="tagline svelte-qgpshq">Software Development Studio</p></div> <ul class="nav-list svelte-qgpshq"><!--[-->`);
     const each_array = ensure_array_like(navigationItems);
