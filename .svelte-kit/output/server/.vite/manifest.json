@@ -159,12 +159,6 @@
       "_app/immutable/assets/_layout.HA7hLLdA.css"
     ]
   },
-  "src/routes/+page.server.ts": {
-    "file": "entries/pages/_page.server.ts.js",
-    "name": "entries/pages/_page.server.ts",
-    "src": "src/routes/+page.server.ts",
-    "isEntry": true
-  },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
     "name": "entries/pages/_page.svelte",
@@ -178,12 +172,6 @@
     "css": [
       "_app/immutable/assets/_page.COxpsJZW.css"
     ]
-  },
-  "src/routes/about/+page.server.ts": {
-    "file": "entries/pages/about/_page.server.ts.js",
-    "name": "entries/pages/about/_page.server.ts",
-    "src": "src/routes/about/+page.server.ts",
-    "isEntry": true
   },
   "src/routes/about/+page.svelte": {
     "file": "entries/pages/about/_page.svelte.js",
@@ -346,12 +334,6 @@
       "_utils2.js"
     ]
   },
-  "src/routes/contact/+page.server.ts": {
-    "file": "entries/pages/contact/_page.server.ts.js",
-    "name": "entries/pages/contact/_page.server.ts",
-    "src": "src/routes/contact/+page.server.ts",
-    "isEntry": true
-  },
   "src/routes/contact/+page.svelte": {
     "file": "entries/pages/contact/_page.svelte.js",
     "name": "entries/pages/contact/_page.svelte",
@@ -365,12 +347,6 @@
     "css": [
       "_app/immutable/assets/_page.FAgEHLFk.css"
     ]
-  },
-  "src/routes/products/+page.server.ts": {
-    "file": "entries/pages/products/_page.server.ts.js",
-    "name": "entries/pages/products/_page.server.ts",
-    "src": "src/routes/products/+page.server.ts",
-    "isEntry": true
   },
   "src/routes/products/+page.svelte": {
     "file": "entries/pages/products/_page.svelte.js",

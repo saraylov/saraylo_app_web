@@ -8,17 +8,12 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-static generates static files for GitHub Pages
-		adapter: adapter({
-			// GitHub Pages serves from /repo-name/, so we need to set the base path
-			// Replace 'saraylo_app_web' with your actual repository name
-			paths: {
-				base: '/saraylo_app_web'
-			},
-			// Allow dynamic routes that can't be prerendered
-			// API routes and dynamic pages will be handled client-side
-			strict: false
-		})
+		// adapter-auto will automatically select the best adapter for the environment
+		adapter: adapter(),
+		// Set base path for GitHub Pages
+		paths: {
+			base: '/saraylo_app_web'
+		}
 	}
 };
 

@@ -28,9 +28,10 @@ If you see "Encountered dynamic routes" error:
 ### 404 Errors on Routes
 If you encounter 404 errors when navigating to pages like `/about` or `/products`:
 - This happens because GitHub Pages expects physical HTML files for each route
-- The workflow automatically copies `index.html` to `404.html` to enable SPA routing
-- All routes will be handled by the client-side router
-- Direct access to URLs works because 404.html serves as fallback
+- The solution uses hash-based routing (`#/about`, `#/products`) for SPA compatibility
+- Custom 404.html automatically redirects path-based URLs to hash-based routing
+- All routes are handled by the client-side SvelteKit router
+- Direct access to URLs now works correctly through automatic redirection
 
 ### Jekyll Error
 - Make sure `.nojekyll` file exists in repository root

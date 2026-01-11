@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // Получаем текущий путь
+        var path = window.location.pathname;
+        
+        // Если это не корневой путь, перенаправляем на корень с хэшем
+        if (path !== '/' && path !== '/saraylo_app_web/') {
+            // Преобразуем путь в хэш для клиентской маршрутизации
+            var hashPath = path.replace('/saraylo_app_web', '');
+            window.location.replace('/saraylo_app_web/#' + hashPath);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting... If you are not redirected automatically, <a href="/saraylo_app_web/">click here</a>.</p>
+</body>
+</html>

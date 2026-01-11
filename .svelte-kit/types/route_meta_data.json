@@ -1,10 +1,6 @@
 {
-	"/": [
-		"src/routes/+page.server.ts"
-	],
-	"/about": [
-		"src/routes/about/+page.server.ts"
-	],
+	"/": [],
+	"/about": [],
 	"/api/v1/auth/login": [
 		"src/routes/api/v1/auth/login/+server.ts"
 	],
@@ -44,12 +40,8 @@
 	"/api/v1/team-members/[id]/delete": [
 		"src/routes/api/v1/team-members/[id]/delete/+server.ts"
 	],
-	"/contact": [
-		"src/routes/contact/+page.server.ts"
-	],
-	"/products": [
-		"src/routes/products/+page.server.ts"
-	],
+	"/contact": [],
+	"/products": [],
 	"/products/[id]": [
 		"src/routes/products/[id]/+page.ts"
 	]
