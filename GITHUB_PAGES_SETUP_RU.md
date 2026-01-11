@@ -25,6 +25,13 @@ If you see "Encountered dynamic routes" error:
 - Dynamic pages will work through client-side routing
 - API routes are meant for server-side usage and aren't needed for static deployment
 
+### 404 Errors on Routes
+If you encounter 404 errors when navigating to pages like `/about` or `/products`:
+- This happens because GitHub Pages expects physical HTML files for each route
+- The workflow automatically copies `index.html` to `404.html` to enable SPA routing
+- All routes will be handled by the client-side router
+- Direct access to URLs works because 404.html serves as fallback
+
 ### Jekyll Error
 - Make sure `.nojekyll` file exists in repository root
 - Verify that GitHub Pages source is set to "GitHub Actions" (not "Deploy from a branch")
