@@ -7,7 +7,12 @@
 	
 	let isHovered = false;
 	
-	function handleCardClick() {
+	function handleCardClick(event: MouseEvent) {
+		// Проверяем, что клик был не по ссылке "View Details"
+		const target = event.target as HTMLElement;
+		if (target.closest('.view-details-link')) {
+			return; // Игнорируем клик по ссылке
+		}
 		goto(`${base}/products/${product.id}`);
 	}
 </script>
