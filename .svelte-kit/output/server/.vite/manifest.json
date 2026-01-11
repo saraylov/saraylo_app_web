@@ -10,6 +10,22 @@
       "_server.js"
     ]
   },
+  "_ProductModal.CsyE6Fz6.css": {
+    "file": "_app/immutable/assets/ProductModal.CsyE6Fz6.css",
+    "src": "_ProductModal.CsyE6Fz6.css"
+  },
+  "_ProductModal.svelte_svelte_type_style_lang.js": {
+    "file": "chunks/ProductModal.svelte_svelte_type_style_lang.js",
+    "name": "ProductModal.svelte_svelte_type_style_lang",
+    "imports": [
+      "_index.js",
+      "_index2.js",
+      "_context.js"
+    ],
+    "css": [
+      "_app/immutable/assets/ProductModal.CsyE6Fz6.css"
+    ]
+  },
   "_auth.js": {
     "file": "chunks/auth.js",
     "name": "auth",
@@ -182,10 +198,12 @@
     "imports": [
       "_index.js",
       "_index2.js",
+      "_products.js",
+      "_ProductModal.svelte_svelte_type_style_lang.js",
       "_context.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.COxpsJZW.css"
+      "_app/immutable/assets/_page.6CCp58VG.css"
     ]
   },
   "src/routes/about/+page.server.ts": {
@@ -388,12 +406,12 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_server.js",
+      "_ProductModal.svelte_svelte_type_style_lang.js",
       "_index2.js",
       "_context.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DWQFjreq.css"
+      "_app/immutable/assets/_page.D9dJHLs0.css"
     ]
   },
   "src/routes/products/[id]/+page.svelte": {

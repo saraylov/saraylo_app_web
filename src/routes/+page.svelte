@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
+	import { products } from '$lib/data/products';
+	import ProductCard from '$lib/components/ProductCard.svelte';
+	import ProductModal from '$lib/components/ProductModal.svelte';
+	import type { Product } from '$lib/types';
 	
 	let isVisible = false;
+	let selectedProduct: Product | null = null;
+	let isModalOpen = false;
 	
 	onMount(() => {
 		// Trigger animation after component mounts
@@ -10,6 +16,16 @@
 			isVisible = true;
 		}, 100);
 	});
+	
+	function handleOpenModal(event: CustomEvent<{ product: Product }>) {
+		selectedProduct = event.detail.product;
+		isModalOpen = true;
+	}
+	
+	function handleCloseModal() {
+		isModalOpen = false;
+		selectedProduct = null;
+	}
 </script>
 
 <div class="home-page">
@@ -90,11 +106,24 @@
 				<h2 class="section-title">{t('components.featured_applications')}</h2>
 				<a href="/products" class="view-all-link">{t('components.view_all_projects')}</a>
 			</div>
-			<div class="placeholder-content">
-				<p class="placeholder-text">{t('products.placeholder')}</p>
+			<div class="products-grid">
+				{#each products as product (product.id)}
+					<ProductCard 
+						product={product}
+						on:openModal={handleOpenModal}
+					/>
+				{/each}
 			</div>
 		</div>
 	</section>
+	
+	{#if selectedProduct && isModalOpen}
+		<ProductModal 
+			product={selectedProduct}
+			isOpen={isModalOpen}
+			on:close={handleCloseModal}
+		/>
+	{/if}
 </div>
 
 <style>
@@ -347,19 +376,18 @@
 		text-decoration: underline;
 	}
 
-	.placeholder-content {
-		text-align: center;
-		padding: var(--spacing-2xl);
-		background: var(--glass-bg);
-		backdrop-filter: blur(10px);
-		border-radius: 20px;
-		border: 1px solid var(--glass-border);
-		color: var(--color-warm-text-light);
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-xl);
 	}
 
-	.placeholder-text {
-		color: var(--color-warm-text-lighter);
-		font-style: italic;
+	@media (max-width: 768px) {
+		.products-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-lg);
+		}
 	}
 
 	@keyframes fadeIn {

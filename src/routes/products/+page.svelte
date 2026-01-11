@@ -4,11 +4,14 @@
 	import { products } from '$lib/data/products';
 	import type { Product } from '$lib/types';
 	import ProductCard from '$lib/components/ProductCard.svelte';
+	import ProductModal from '$lib/components/ProductModal.svelte';
 	import { t } from '$lib/i18n';
 	
 	let filteredProducts: Product[] = [];
 	let selectedFilter: 'all' | 'desktop' | 'mobile' = 'all';
 	let isVisible = false;
+	let selectedProduct: Product | null = null;
+	let isModalOpen = false;
 	
 	const filters = [
 		{ id: 'all', label: t('products.all') },
@@ -34,6 +37,16 @@
 	function handleFilterChange(filter: string) {
 		selectedFilter = filter as 'all' | 'desktop' | 'mobile';
 		filterProducts();
+	}
+	
+	function handleOpenModal(event: CustomEvent<{ product: Product }>) {
+		selectedProduct = event.detail.product;
+		isModalOpen = true;
+	}
+	
+	function handleCloseModal() {
+		isModalOpen = false;
+		selectedProduct = null;
 	}
 </script>
 
@@ -84,10 +97,21 @@
 							style="animation-delay: {i * 0.1}s"
 							class:visible={isVisible}
 						>
-							<ProductCard {product} />
+							<ProductCard 
+								{product}
+								on:openModal={handleOpenModal}
+							/>
 						</div>
 					{/each}
 				</div>
+				
+				{#if selectedProduct && isModalOpen}
+					<ProductModal 
+						product={selectedProduct}
+						isOpen={isModalOpen}
+						on:close={handleCloseModal}
+					/>
+				{/if}
 			{:else}
 				<div class="empty-state">
 					<div class="empty-icon">🔍</div>

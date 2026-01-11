@@ -1,18 +1,23 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { createEventDispatcher } from 'svelte';
 	import type { Product } from '$lib/types';
 	import { t } from '$lib/i18n';
 	export let product: Product;
 	
+	const dispatch = createEventDispatcher();
+	
 	let isHovered = false;
 	
-	// Обработчик клика удален - навигация осуществляется через ссылку
+	function openModal() {
+		dispatch('openModal', { product });
+	}
 </script>
 
 <article 
 	class="product-card"
 	on:mouseenter={() => isHovered = true}
 	on:mouseleave={() => isHovered = false}
+	on:click={openModal}
 >
 	<div class="card-header">
 		<div class="product-icon">
@@ -44,12 +49,12 @@
 			{/each}
 		</div>
 		
-		<a 
-			href={`${base}/products/${product.id}`} 
+		<button 
 			class="view-details-link"
+			on:click|stopPropagation={openModal}
 		>
 			{t('components.view_details')}
-		</a>
+		</button>
 	</div>
 	
 	<div class="hover-effect" class:active={isHovered}></div>
