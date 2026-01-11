@@ -10,9 +10,9 @@ const config = {
 	kit: {
 		// adapter-static generates static files for GitHub Pages
 		adapter: adapter({
-			// For "Deploy from a branch" with root directory, we don't need base path
+			// Configure base path for GitHub Pages
 			paths: {
-				base: ''
+				base: process.env.GITHUB_PAGES ? '/saraylo_app_web' : ''
 			},
 			// Configure fallback for SPA routing on GitHub Pages
 			// This creates a 200.html file that handles all routes
