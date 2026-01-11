@@ -1,35 +1,18 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { goto } from '$app/navigation';
 	import type { Product } from '$lib/types';
 	import { t } from '$lib/i18n';
 	export let product: Product;
 	
 	let isHovered = false;
 	
-	function handleCardClick(event: MouseEvent) {
-		// Проверяем, что клик был не по ссылке "View Details"
-		const target = event.target as HTMLElement;
-		if (target.closest('.view-details-link')) {
-			return; // Игнорируем клик по ссылке
-		}
-		goto(`${base}/products/${product.id}`);
-	}
+	// Обработчик клика удален - навигация осуществляется через ссылку
 </script>
 
 <article 
 	class="product-card"
 	on:mouseenter={() => isHovered = true}
 	on:mouseleave={() => isHovered = false}
-	on:click={handleCardClick}
-	role="button"
-	tabindex="0"
-	on:keydown={(e) => {
-		if (e.key === 'Enter' || e.key === ' ') {
-			e.preventDefault();
-			handleCardClick();
-		}
-	}}
 >
 	<div class="card-header">
 		<div class="product-icon">
@@ -64,7 +47,6 @@
 		<a 
 			href={`${base}/products/${product.id}`} 
 			class="view-details-link"
-			on:click|stopPropagation={() => {}}
 		>
 			{t('components.view_details')}
 		</a>

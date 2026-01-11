@@ -1,7 +1,7 @@
-import { w as ensure_array_like, x as attr_class, y as attr, z as slot } from "../../chunks/index2.js";
+import { w as ensure_array_like, x as attr_class, y as attr, z as slot } from "../../chunks/index.js";
 import { b as base } from "../../chunks/server.js";
 import "@sveltejs/kit/internal/server";
-import { l as locales, t } from "../../chunks/index3.js";
+import { l as locales, t } from "../../chunks/index2.js";
 import { e as escape_html } from "../../chunks/context.js";
 function LanguageSwitcher($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {

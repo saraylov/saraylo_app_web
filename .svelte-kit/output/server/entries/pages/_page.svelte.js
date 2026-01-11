@@ -1,5 +1,5 @@
-import { x as attr_class } from "../../chunks/index2.js";
-import { t } from "../../chunks/index3.js";
+import { x as attr_class } from "../../chunks/index.js";
+import { t } from "../../chunks/index2.js";
 import { e as escape_html } from "../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {

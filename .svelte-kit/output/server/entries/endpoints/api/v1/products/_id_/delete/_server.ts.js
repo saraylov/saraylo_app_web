@@ -1,7 +1,7 @@
 import "@sveltejs/kit";
 import { d as deleteProduct } from "../../../../../../../chunks/productService.js";
 import { r as requireRole } from "../../../../../../../chunks/auth.js";
-import { n as notFoundError, s as successResponse, h as handleError } from "../../../../../../../chunks/utils3.js";
+import { n as notFoundError, s as successResponse, h as handleError } from "../../../../../../../chunks/utils2.js";
 async function DELETE({ request, params }) {
   try {
     const authResult = requireRole(["admin"])(request);

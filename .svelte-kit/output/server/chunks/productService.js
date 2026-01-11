@@ -1,5 +1,5 @@
 import { p as products } from "./products.js";
-import { f as formatDate, g as generateId } from "./utils3.js";
+import { f as formatDate, g as generateId } from "./utils2.js";
 let productsStore = products.map((product) => ({
   ...product,
   releaseDate: formatDate(product.releaseDate),
