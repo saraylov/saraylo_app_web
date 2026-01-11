@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Saraylo Developer Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Preload critical resources -->
+    <link rel="modulepreload" href="./_app/immutable/entry/start.CR_ZpI9r.js">
+    <link rel="modulepreload" href="./_app/immutable/entry/app.D7sLei-a.js">
+    
+    <style>
+        /* Critical CSS to prevent FOUC */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #333;
+        }
+        
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .loading-content {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .retry-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+        
+        .retry-button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="loading-container">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h2>Загрузка приложения</h2>
+                <p>Пожалуйста, подождите...</p>
+                <div id="error-message" class="error-message">
+                    <strong>Ошибка загрузки:</strong>
+                    <div id="error-details"></div>
+                    <button class="retry-button" onclick="retryLoad()">Повторить попытку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced error handling
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error('Global error caught:', { message, source, lineno, colno, error });
+            showError('JavaScript Error: ' + (error?.message || message));
+            return true;
+        };
+        
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+            showError('Promise Error: ' + (event.reason?.message || 'Unknown error'));
+            event.preventDefault();
+        });
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            const errorDetails = document.getElementById('error-details');
+            errorDetails.textContent = message;
+            errorDiv.style.display = 'block';
+            document.querySelector('.spinner').style.display = 'none';
+            document.querySelector('h2').textContent = 'Ошибка загрузки';
+            document.querySelector('p').textContent = 'Не удалось загрузить приложение';
+        }
+        
+        function retryLoad() {
+            location.reload();
+        }
+        
+        // Check browser support
+        if (!window.Promise || !window.fetch) {
+            showError('Ваш браузер не поддерживает необходимые технологии. Пожалуйста, обновите браузер.');
+        } else {
+            console.log('Browser features check passed');
+            
+            // Load the application
+            Promise.all([
+                import('./_app/immutable/entry/start.CR_ZpI9r.js').catch(err => {
+                    throw new Error('Failed to load start module: ' + err.message);
+                }),
+                import('./_app/immutable/entry/app.D7sLei-a.js').catch(err => {
+                    throw new Error('Failed to load app module: ' + err.message);
+                })
+            ])
+            .then(([kit, app]) => {
+                console.log('Modules loaded successfully');
+                
+                try {
+                    const element = document.getElementById('app');
+                    kit.start(app, element);
+                    console.log('Application started successfully');
+                } catch (error) {
+                    throw new Error('Failed to start application: ' + error.message);
+                }
+            })
+            .catch(error => {
+                console.error('Application load failed:', error);
+                showError(error.message);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -19,7 +19,9 @@ const config = {
 			fallback: 'index.html',
 			// Allow dynamic routes that can't be prerendered
 			// API routes and dynamic pages will be handled client-side
-			strict: false
+			strict: false,
+			// Ensure proper module handling for older browsers
+			preloadStrategy: 'modulepreload'
 		})
 	}
 };
