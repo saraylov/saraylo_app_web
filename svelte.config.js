@@ -8,12 +8,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// Configure static adapter for GitHub Pages
+		// Use static adapter for GitHub Pages deployment
 		adapter: adapter({
-			// Enable fallback for SPA routing
-			fallback: '404.html',
-			// Allow dynamic routes to be handled client-side
-			strict: false
+			// Enable fallback for client-side routing
+			fallback: '404.html'
 		}),
 		// Set base path for GitHub Pages
 		paths: {
@@ -21,14 +19,14 @@ const config = {
 		},
 		// Handle prerender errors for base path mismatch
 		prerender: {
-		handleHttpError: ({ path, referrer, message }) => {
-			// Ignore base path mismatch errors
-			if (message.includes('does not begin with `base`')) {
-				return;
+			handleHttpError: ({ path, referrer, message }) => {
+				// Ignore base path mismatch errors
+				if (message.includes('does not begin with `base`')) {
+					return;
+				}
+				// Throw other errors
+				throw new Error(message);
 			}
-			// Throw other errors
-			throw new Error(message);
-		}
 		}
 	}
 };
