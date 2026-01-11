@@ -22,6 +22,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.0.6",
+    "jsonwebtoken": "^9.0.3",
     "svelte-i18n": "^4.0.1"
   }
 }

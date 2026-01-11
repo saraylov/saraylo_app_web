@@ -1,6 +1,45 @@
 {
 	"/": [],
 	"/about": [],
+	"/api/v1/auth/login": [
+		"src/routes/api/v1/auth/login/+server.ts"
+	],
+	"/api/v1/backups": [
+		"src/routes/api/v1/backups/+server.ts"
+	],
+	"/api/v1/backups/[id]": [
+		"src/routes/api/v1/backups/[id]/+server.ts"
+	],
+	"/api/v1/backups/[id]/restore": [
+		"src/routes/api/v1/backups/[id]/restore/+server.ts"
+	],
+	"/api/v1/navigation": [
+		"src/routes/api/v1/navigation/+server.ts"
+	],
+	"/api/v1/navigation/[id]": [
+		"src/routes/api/v1/navigation/[id]/+server.ts"
+	],
+	"/api/v1/navigation/[id]/delete": [
+		"src/routes/api/v1/navigation/[id]/delete/+server.ts"
+	],
+	"/api/v1/products": [
+		"src/routes/api/v1/products/+server.ts"
+	],
+	"/api/v1/products/[id]": [
+		"src/routes/api/v1/products/[id]/+server.ts"
+	],
+	"/api/v1/products/[id]/delete": [
+		"src/routes/api/v1/products/[id]/delete/+server.ts"
+	],
+	"/api/v1/team-members": [
+		"src/routes/api/v1/team-members/+server.ts"
+	],
+	"/api/v1/team-members/[id]": [
+		"src/routes/api/v1/team-members/[id]/+server.ts"
+	],
+	"/api/v1/team-members/[id]/delete": [
+		"src/routes/api/v1/team-members/[id]/delete/+server.ts"
+	],
 	"/contact": [],
 	"/products": [],
 	"/products/[id]": [
