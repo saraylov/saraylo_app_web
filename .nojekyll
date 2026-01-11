@@ -1,0 +1,2 @@
+# This file prevents GitHub Pages from running Jekyll
+# Since we're using SvelteKit to generate static files, we don't need Jekyll
