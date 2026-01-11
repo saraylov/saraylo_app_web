@@ -1,4 +1,4 @@
-import { f as formatDate, g as generateId } from "./utils2.js";
+import { f as formatDate, g as generateId } from "./utils3.js";
 let navigationStore = [
   {
     id: "nav1",

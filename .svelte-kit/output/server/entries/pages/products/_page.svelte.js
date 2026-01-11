@@ -1,13 +1,17 @@
-import { x as attr_class, w as ensure_array_like, y as attr, G as bind_props, F as attr_style, J as stringify } from "../../../chunks/index.js";
+import { x as attr_class, w as ensure_array_like, y as attr, G as bind_props, F as attr_style, J as stringify } from "../../../chunks/index2.js";
 import { b as base } from "../../../chunks/server.js";
 import "@sveltejs/kit/internal/server";
-import { t } from "../../../chunks/index2.js";
+import "@sveltejs/kit/internal";
+import "../../../chunks/exports.js";
+import "../../../chunks/utils.js";
+import "../../../chunks/state.svelte.js";
+import { t } from "../../../chunks/index3.js";
 import { e as escape_html } from "../../../chunks/context.js";
 function ProductCard($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let product = $$props["product"];
     let isHovered = false;
-    $$renderer2.push(`<article class="product-card svelte-11ja2cl"><div class="card-header svelte-11ja2cl"><div class="product-icon svelte-11ja2cl">${escape_html(product.icon)}</div> <span${attr_class("product-type svelte-11ja2cl", void 0, {
+    $$renderer2.push(`<article class="product-card svelte-11ja2cl" role="button" tabindex="0"><div class="card-header svelte-11ja2cl"><div class="product-icon svelte-11ja2cl">${escape_html(product.icon)}</div> <span${attr_class("product-type svelte-11ja2cl", void 0, {
       "desktop": product.type === "desktop",
       "mobile": product.type === "mobile"
     })}>${escape_html(product.type === "desktop" ? t("components.product_type_desktop") : t("components.product_type_mobile"))}</span></div> <div class="card-content svelte-11ja2cl"><h3 class="product-name svelte-11ja2cl">${escape_html(product.name)}</h3> <p class="product-description svelte-11ja2cl">${escape_html(product.description)}</p> <div class="features-preview svelte-11ja2cl"><!--[-->`);

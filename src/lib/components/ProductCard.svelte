@@ -1,16 +1,30 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { goto } from '$app/navigation';
 	import type { Product } from '$lib/types';
 	import { t } from '$lib/i18n';
 	export let product: Product;
 	
 	let isHovered = false;
+	
+	function handleCardClick() {
+		goto(`${base}/products/${product.id}`);
+	}
 </script>
 
 <article 
 	class="product-card"
 	on:mouseenter={() => isHovered = true}
 	on:mouseleave={() => isHovered = false}
+	on:click={handleCardClick}
+	role="button"
+	tabindex="0"
+	on:keydown={(e) => {
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			handleCardClick();
+		}
+	}}
 >
 	<div class="card-header">
 		<div class="product-icon">
@@ -42,7 +56,11 @@
 			{/each}
 		</div>
 		
-		<a href={`${base}/products/${product.id}`} class="view-details-link">
+		<a 
+			href={`${base}/products/${product.id}`} 
+			class="view-details-link"
+			on:click|stopPropagation={() => {}}
+		>
 			{t('components.view_details')}
 		</a>
 	</div>
@@ -63,12 +81,18 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+		cursor: pointer;
 	}
 
 	.product-card:hover {
 		transform: translateY(-8px);
 		box-shadow: var(--shadow-md);
 		border-color: var(--color-lime);
+	}
+	
+	.product-card:focus {
+		outline: 2px solid var(--color-lime);
+		outline-offset: 2px;
 	}
 
 	.card-header {

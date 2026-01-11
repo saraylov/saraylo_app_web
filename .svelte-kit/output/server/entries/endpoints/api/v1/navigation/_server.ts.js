@@ -1,6 +1,6 @@
 import "@sveltejs/kit";
 import { g as getAllNavigationItems, a as getNavigationItemCount, b as getActiveNavigationItems } from "../../../../../chunks/navigationService.js";
-import { v as validationError, s as successResponse, h as handleError } from "../../../../../chunks/utils2.js";
+import { v as validationError, s as successResponse, h as handleError } from "../../../../../chunks/utils3.js";
 async function GET({ url }) {
   try {
     const showAll = url.searchParams.get("showAll") === "true";

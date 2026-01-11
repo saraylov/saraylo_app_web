@@ -1,7 +1,7 @@
 import "@sveltejs/kit";
 import { g as getAllProducts, a as getProductCount, c as createProduct } from "../../../../../chunks/productService.js";
 import { r as requireRole } from "../../../../../chunks/auth.js";
-import { v as validationError, s as successResponse, h as handleError } from "../../../../../chunks/utils2.js";
+import { v as validationError, s as successResponse, h as handleError } from "../../../../../chunks/utils3.js";
 async function GET({ url }) {
   try {
     const search = url.searchParams.get("search") || void 0;

@@ -1,7 +1,7 @@
 import "@sveltejs/kit";
 import { e as getNavigationItemById, d as deleteNavigationItem } from "../../../../../../chunks/navigationService.js";
 import { r as requireRole } from "../../../../../../chunks/auth.js";
-import { n as notFoundError, s as successResponse, h as handleError } from "../../../../../../chunks/utils2.js";
+import { n as notFoundError, s as successResponse, h as handleError } from "../../../../../../chunks/utils3.js";
 async function GET({ params }) {
   try {
     const { id } = params;
