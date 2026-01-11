@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 	import { products } from '$lib/data/products';
 	import type { Product } from '$lib/types';
@@ -63,7 +64,7 @@
 						src={data.product.images[currentImageIndex]} 
 						alt="{data.product.name} screenshot"
 						class="main-image"
-						on:error={(e) => e.currentTarget.src = '/images/placeholder.jpg'}
+						on:error={(e) => (e.target as HTMLImageElement).src = '/images/placeholder.jpg'}
 					/>
 					
 					{#if data.product.images.length > 1}
@@ -83,7 +84,7 @@
 								<img 
 									src={image} 
 									alt="Thumbnail {index + 1}"
-									on:error={(e) => e.currentTarget.src = '/images/placeholder-thumb.jpg'}
+									on:error={(e) => (e.target as HTMLImageElement).src = '/images/placeholder-thumb.jpg'}
 								/>
 							</button>
 						{/each}
@@ -127,7 +128,7 @@
 				<p>{t('common.download_cta').replace('{name}', data.product.name)}</p>
 				<div class="cta-buttons">
 					<button class="btn btn-primary">{t('common.download_now')}</button>
-					<a href="/products" class="btn btn-secondary">{t('common.view_other_apps')}</a>
+					<a href={`${base}/products`} class="btn btn-secondary">{t('common.view_other_apps')}</a>
 				</div>
 			</div>
 		</div>

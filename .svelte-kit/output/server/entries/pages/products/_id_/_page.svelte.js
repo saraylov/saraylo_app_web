@@ -1,4 +1,6 @@
 import { x as attr_class, y as attr, J as stringify, w as ensure_array_like, G as bind_props } from "../../../../chunks/index.js";
+import { b as base } from "../../../../chunks/server.js";
+import "@sveltejs/kit/internal/server";
 import { t } from "../../../../chunks/index2.js";
 import { e as escape_html } from "../../../../chunks/context.js";
 function _page($$renderer, $$props) {
@@ -41,7 +43,7 @@ function _page($$renderer, $$props) {
       let tech = each_array_2[$$index_2];
       $$renderer2.push(`<span class="tech-tag svelte-9lltit">${escape_html(tech)}</span>`);
     }
-    $$renderer2.push(`<!--]--></div></div></div></div></section> <section class="cta-section svelte-9lltit"><div class="container"><div${attr_class("cta-content svelte-9lltit", void 0, { "visible": isVisible })}><h2 class="svelte-9lltit">${escape_html(t("common.ready_get_started"))}</h2> <p class="svelte-9lltit">${escape_html(t("common.download_cta").replace("{name}", data.product.name))}</p> <div class="cta-buttons svelte-9lltit"><button class="btn btn-primary svelte-9lltit">${escape_html(t("common.download_now"))}</button> <a href="/products" class="btn btn-secondary svelte-9lltit">${escape_html(t("common.view_other_apps"))}</a></div></div></div></section></div>`);
+    $$renderer2.push(`<!--]--></div></div></div></div></section> <section class="cta-section svelte-9lltit"><div class="container"><div${attr_class("cta-content svelte-9lltit", void 0, { "visible": isVisible })}><h2 class="svelte-9lltit">${escape_html(t("common.ready_get_started"))}</h2> <p class="svelte-9lltit">${escape_html(t("common.download_cta").replace("{name}", data.product.name))}</p> <div class="cta-buttons svelte-9lltit"><button class="btn btn-primary svelte-9lltit">${escape_html(t("common.download_now"))}</button> <a${attr("href", `${base}/products`)} class="btn btn-secondary svelte-9lltit">${escape_html(t("common.view_other_apps"))}</a></div></div></div></section></div>`);
     bind_props($$props, { data });
   });
 }

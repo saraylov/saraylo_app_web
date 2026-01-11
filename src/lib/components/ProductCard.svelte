@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import type { Product } from '$lib/types';
 	import { t } from '$lib/i18n';
 	export let product: Product;
@@ -41,7 +42,7 @@
 			{/each}
 		</div>
 		
-		<a href={`/products/${product.id}`} class="view-details-link">
+		<a href={`${base}/products/${product.id}`} class="view-details-link">
 			{t('components.view_details')}
 		</a>
 	</div>

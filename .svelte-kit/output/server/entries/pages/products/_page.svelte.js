@@ -1,4 +1,6 @@
 import { x as attr_class, w as ensure_array_like, y as attr, G as bind_props, F as attr_style, J as stringify } from "../../../chunks/index.js";
+import { b as base } from "../../../chunks/server.js";
+import "@sveltejs/kit/internal/server";
 import { t } from "../../../chunks/index2.js";
 import { e as escape_html } from "../../../chunks/context.js";
 function ProductCard($$renderer, $$props) {
@@ -27,7 +29,7 @@ function ProductCard($$renderer, $$props) {
       let tech = each_array_1[$$index_1];
       $$renderer2.push(`<span class="tech-item svelte-11ja2cl">${escape_html(tech)}</span>`);
     }
-    $$renderer2.push(`<!--]--></div> <a${attr("href", `/products/${product.id}`)} class="view-details-link svelte-11ja2cl">${escape_html(t("components.view_details"))}</a></div> <div${attr_class("hover-effect svelte-11ja2cl", void 0, { "active": isHovered })}></div></article>`);
+    $$renderer2.push(`<!--]--></div> <a${attr("href", `${base}/products/${product.id}`)} class="view-details-link svelte-11ja2cl">${escape_html(t("components.view_details"))}</a></div> <div${attr_class("hover-effect svelte-11ja2cl", void 0, { "active": isHovered })}></div></article>`);
     bind_props($$props, { product });
   });
 }
