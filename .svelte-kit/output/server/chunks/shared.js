@@ -1,6 +1,5 @@
 import * as devalue from "devalue";
 import { t as text_decoder, b as base64_encode, c as base64_decode } from "./utils.js";
-const BROWSER = false;
 function set_nested_value(object, path_string, value) {
   if (path_string.startsWith("n:")) {
     path_string = path_string.slice(2);
@@ -510,14 +509,13 @@ export {
   BINARY_FORM_CONTENT_TYPE as B,
   INVALIDATED_PARAM as I,
   TRAILING_SLASH_PARAM as T,
-  BROWSER as a,
-  stringify_remote_arg as b,
+  stringify_remote_arg as a,
+  create_field_proxy as b,
   create_remote_key as c,
   deserialize_binary_form as d,
-  create_field_proxy as e,
+  set_nested_value as e,
   flatten_issues as f,
-  set_nested_value as g,
-  deep_set as h,
+  deep_set as g,
   normalize_issue as n,
   parse_remote_arg as p,
   stringify as s

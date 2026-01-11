@@ -1,4 +1,5 @@
-let base = "/saraylo_app_web";
+const BROWSER = false;
+let base = "";
 let assets = base;
 const app_dir = "_app";
 const relative = true;
@@ -21,6 +22,7 @@ function set_prerendering() {
   prerendering = true;
 }
 export {
+  BROWSER as B,
   assets as a,
   base as b,
   app_dir as c,
